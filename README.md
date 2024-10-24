@@ -1,3 +1,3 @@
 # WochenschauHandler
 
-Letztlich eine Fingerübung, um die Wochenschau-Reihe „Methoden historischen Lernens“ zu scrapen und im Anschluss für den [Wikipedia-Artikel](https://de.wikipedia.org/wiki/Wochenschau_Verlag#Buchreihe_%E2%80%9EMethoden_historischen_Lernens%E2%80%9C) aufzubereiten.
+Ultimately, a warm-up exercise to scrape the Wochenschau series 'Methods of Historical Learning' and subsequently prepare it for the [Wikipedia article](https://de.wikipedia.org/wiki/Wochenschau_Verlag#Buchreihe_%E2%80%9EMethoden_historischen_Lernens%E2%80%9C).
