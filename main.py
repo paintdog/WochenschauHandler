@@ -80,8 +80,10 @@ def output(authors, title, subtitle, ort, verlag, edition, year, reihe, isbn):
     # Authors
     if "N. N." in authors:
         output_data.append("N. N.:")
-    else:
+    elif len(authors) < 2:
         output_data.append("[[" + "]] und [[".join(authors) + "]]:")
+    else:
+        output_data.append("[[" + "]], [[".join(authors[:-1]) + "]] und [[" + authors[-1] + "]]:")
     # Title and subtitle
     if subtitle is not None:
         output_data.append(f"''{title}. {subtitle}''.")
@@ -98,15 +100,14 @@ def output(authors, title, subtitle, ort, verlag, edition, year, reihe, isbn):
         output_data.append(f"{ort}: {verlag} <sup>{edition}</sup>{year} ({reihe}). ISBN {isbn}")
     return " ".join(output_data)
 
-def main():
+def main(reihe, reihe_url_part, number_subpages):
     output_data = []
     print("************************************************************")
-    for i in range(1, 2+1):
-        URL = f"https://www.wochenschau-verlag.de/Reihe/Methoden-historischen-Lernens?order=name-asc&p={i}"
+    for i in range(1, number_subpages+1):
+        URL = f"https://www.wochenschau-verlag.de/Reihe/{reihe_url_part}?order=name-asc&p={i}"
 
         ort = "Frankfurt am Main"
         verlag = "Wochenschau Verlag"
-        reihe = "Methoden historischen Lernens"
         
         # print(url)
         soup = download2soup(URL)
@@ -151,6 +152,28 @@ def main():
         print("*", line)
     
 if __name__ == "__main__":
-    main()
+
+    
+    reihe = "Methoden historischen Lernens"
+    number_subpages = 2
+    reihe_url_part = "Methoden-historischen-Lernens"
+
+    reihe = "Geschichte unterrichten"
+    number_subpages = 3
+    reihe_url_part = "Geschichte-unterrichten"
+
+    reihe = "Geschichtsunterricht praktisch"
+    number_subpages = 3
+    reihe_url_part = "Geschichtsunterricht-praktisch"
+
+    reihe = "Kleine Reihe - Geschichte"
+    number_subpages = 1
+    reihe_url_part = "Kleine-Reihe-Geschichte"
+
+    reihe = "Forum Historisches Lernen"
+    number_subpages = 2
+    reihe_url_part = "Forum-Historisches-Lernen"
+    
+    main(reihe, reihe_url_part, number_subpages)
 
 
