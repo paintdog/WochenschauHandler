@@ -3,8 +3,6 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://www.wochenschau-verlag.de/Reihe/Methoden-historischen-Lernens?order=name-asc&p={page}"
-
 
 def download2soup(url):
     """Downloads a webpage by its URL and returns it as a BeautifulSoup object."""
@@ -104,14 +102,14 @@ def main():
     output_data = []
     print("************************************************************")
     for i in range(1, 2+1):
-        url = f"https://www.wochenschau-verlag.de/Reihe/Methoden-historischen-Lernens?order=name-asc&p={i}"
+        URL = f"https://www.wochenschau-verlag.de/Reihe/Methoden-historischen-Lernens?order=name-asc&p={i}"
 
         ort = "Frankfurt am Main"
         verlag = "Wochenschau Verlag"
         reihe = "Methoden historischen Lernens"
         
         # print(url)
-        soup = download2soup(url)
+        soup = download2soup(URL)
 
         # Retrieve product informations
         product_infos = soup.find_all('div', attrs={"class": "product-info"})
